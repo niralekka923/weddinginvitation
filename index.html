@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background: #fdf5e6; text-align: center; padding: 50px; }
+        .card { background: white; padding: 40px; border: 10px double #d4af37; max-width: 500px; margin: auto; border-radius: 15px; }
+        h1 { color: #8b0000; }
+        .names { font-size: 24px; font-weight: bold; color: #d4af37; margin: 20px 0; }
+        .details { font-size: 18px; color: #555; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Wedding Invitation</h1>
+        <p>We are delighted to invite you to the wedding of</p>
+        
+        <div class="names">
+            <span id="groom">Groom Name</span> & <span id="bride">Bride Name</span>
+        </div>
+
+        <div class="details">
+            📅 Date: <span id="date">01 Jan 2026</span> <br>
+            📍 Venue: <span id="venue">Wedding Hall, City</span> <br>
+            💬 Message: <span id="message">Please join us!</span>
+        </div>
+    </div>
+
+    <script>
+        // URL से डेटा निकालने का फंक्शन
+        const params = new URLSearchParams(window.location.search);
+
+        // डेटा को HTML Elements में डालना
+        if(params.has('groom')) document.getElementById('groom').innerText = params.get('groom');
+        if(params.has('bride')) document.getElementById('bride').innerText = params.get('bride');
+        if(params.has('date')) document.getElementById('date').innerText = params.get('date');
+        if(params.has('venue')) document.getElementById('venue').innerText = params.get('venue');
+        if(params.has('msg')) document.getElementById('message').innerText = params.get('msg');
+    </script>
+</body>
+</html>
