@@ -1,0 +1,477 @@
+:root {
+    --royal-maroon: #800000;
+    --gold: #D4AF37;
+    --soft-pink: #FFF0F5;
+    --deep-purple: #4B0082;
+    --bg-outer: #f4eae6;
+}
+
+.wedding-congrats-text {
+    font-size: 1.2rem;
+    margin-top: 40px;
+    border-top: 1px dashed var(--gold);
+    padding-top: 20px;
+}
+
+.wedding-function h2 {
+    margin-bottom: 20px;
+}
+
+.relatives-container {
+    text-align: left;
+}
+
+/* --- Global Edge Gap & Fit --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Yantra Manav', sans-serif;
+    background: var(--bg-outer);
+    color: #333;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding: 15px;
+}
+
+.main-wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: linear-gradient(rgba(255,250,250,0.95), rgba(255,250,250,0.95)),
+    url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Typography */
+h1, h2, .hindi-title {
+    font-family: 'Rozha One', serif;
+    color: var(--royal-maroon);
+}
+.quote-text {
+    font-family: 'Kalam', cursive;
+    font-size: 1.4rem;
+    color: #555;
+    line-height: 1.6;
+}
+.couple-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    color: var(--royal-maroon);
+    margin: 15px 0;
+}
+
+/* --- Section 1: Hero Attraction --- */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #fff0f5 0%, #ffe4e1 100%);
+    border-bottom: 5px double var(--gold);
+    position: relative;
+    padding: 40px 20px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    border-radius: 50% 50% 0 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: 0;
+    animation: floatOrbs 8s infinite alternate ease-in-out;
+}
+.orb-1 {
+    width: 250px;
+    height: 250px;
+    background: rgba(212, 175, 55, 0.4);
+    top: -5%;
+    left: -5%;
+}
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(128, 0, 0, 0.2);
+    bottom: -10%;
+    right: -5%;
+    animation-delay: -4s;
+}
+
+@keyframes floatOrbs {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(40px, 40px) scale(1.1);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.animated-icon {
+    color: var(--gold);
+    margin-bottom: 25px;
+    animation: floatIcon 3s ease-in-out infinite;
+    filter: drop-shadow(0px 10px 10px rgba(212, 175, 55, 0.3));
+}
+
+@keyframes floatIcon {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* --- Shape-Based Layout --- */
+.content-shape {
+    width: 90%;
+    max-width: 850px;
+    margin: 50px auto;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 50px 0 50px 0;
+    box-shadow: 15px 15px 40px rgba(0,0,0,0.05), -15px -15px 40px rgba(255,255,255,0.8);
+    border: 1px solid rgba(212,175,55,0.2);
+    text-align: center;
+}
+
+.couple-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.groom-info, .bride-info {
+    width: 100%;
+    text-align: center;
+}
+
+.vs-circle {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--gold);
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
+    flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+    .couple-card {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .groom-info, .bride-info {
+        width: 40%;
+    }
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    padding: 5px;
+    background: white;
+    object-fit: cover;
+    animation: pulse 2s infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+    70% {
+        transform: scale(1.03);
+        box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+/* --- Events Section --- */
+.event-box {
+    background: var(--royal-maroon);
+    color: white;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 500px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(128,0,0,0.2);
+}
+
+.event-box h3 {
+    margin-bottom: 10px;
+    font-family: 'Rozha One', serif;
+    font-size: 1.5rem;
+}
+
+.event-box::after {
+    content: "\f004";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    font-size: 6rem;
+    opacity: 0.1;
+}
+
+.relatives-section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 30px;
+    margin-bottom: 25px;
+    border-left: 8px solid var(--gold);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.countdown-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 60px auto;
+    background: linear-gradient(135deg, var(--royal-maroon) 0%, #5a0000 100%);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(128,0,0,0.3);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.countdown-container::before {
+    content: "\f017";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    font-size: 10rem;
+    opacity: 0.05;
+    color: var(--gold);
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.time-unit {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    width: 90px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.time-unit span {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--gold);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+.time-unit label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.ending-section {
+    padding: 80px 20px 60px;
+    background: var(--royal-maroon);
+    color: white;
+    border-radius: 100px 100px 0 0;
+    margin-top: 80px;
+    text-align: center;
+    position: relative;
+}
+
+@media (max-width: 600px) {
+    .couple-name {
+        font-size: 2.8rem;
+    }
+    .time-unit {
+        width: 75px;
+        height: 85px;
+    }
+    .time-unit span {
+        font-size: 1.8rem;
+    }
+    .content-shape {
+        padding: 30px 20px;
+        width: 95%;
+        border-radius: 30px 0 30px 0;
+    }
+    .ending-section {
+        padding: 60px 15px 40px;
+        border-radius: 60px 60px 0 0;
+    }
+}
+
+/* =========================================
+   NEWLY EXTRACTED CLASSES (From index & script)
+   ========================================= */
+
+/* Watermark styles from head */
+.watermark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+}
+.watermark-text {
+    font-size: 3.5rem;
+    color: rgba(211, 47, 47, 0.4);
+    font-family: sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    transform: rotate(-30deg);
+    white-space: nowrap;
+    animation: slideWatermark 3s ease-in-out infinite alternate;
+    margin: -30px 0;
+}
+@keyframes slideWatermark {
+    0% {
+        transform: rotate(-30deg) translateX(-50px);
+    }
+    100% {
+        transform: rotate(-30deg) translateX(50px);
+    }
+}
+
+/* Quote Animation styles */
+.religious-animation-text {
+    transition: opacity 0.8s ease-in-out;
+    opacity: 1;
+}
+.fade-out {
+    opacity: 0;
+}
+
+/* Inlines extracted from index.html */
+.down-arrow-icon {
+    margin-top: 40px;
+    font-size: 1.5rem;
+    animation: floatIcon 2s infinite;
+    color: var(--gold);
+}
+.icon-gold {
+    color: var(--gold);
+}
+.countdown-title {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.countdown-date {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+}
+.thank-you-title {
+    color: var(--gold);
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-family: 'Great Vibes', cursive;
+}
+.thank-you-request {
+    color: #eee;
+    font-size: 1.2rem;
+}
+.vineet-section {
+    margin-top: 40px;
+    border-top: 1px solid rgba(255,215,0,0.3);
+    padding-top: 30px;
+}
+.vineet-label {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--gold);
+}
+.vineet-names {
+    font-size: 1.3rem;
+}
+
+/* Inlines extracted from script.js injection */
+.function-link-address {
+    color: var(--gold);
+    text-decoration: none;
+}
+.relatives-box-wrapper {
+    margin-bottom: 20px;
+}
+.relatives-title {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+.relatives-desc {
+    line-height: 1.8;
+    color: #444;
+}
+.timer-end-msg {
+    color: white;
+    font-family: 'Kalam', cursive;
+}
