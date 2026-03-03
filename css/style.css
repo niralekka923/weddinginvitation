@@ -1,0 +1,671 @@
+/* =========================================
+   1. ROOT VARIABLES (Color & Theme)
+   ========================================= */
+:root {
+    --royal-maroon: #800000;
+    --maroon-light: #a31515;
+    --gold: #D4AF37;
+    --gold-light: #f5da7b;
+    --bg-outer: #f4eae6;
+    --text-dark: #333333;
+    --text-muted: #555555;
+    --card-bg: rgba(255, 255, 255, 0.98);
+}
+
+/* =========================================
+   2. GLOBAL SETTINGS & RESET
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Yantra Manav', sans-serif;
+    background: var(--bg-outer);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    /* स्क्रीन के बाहर कुछ नहीं जाएगा */
+    scroll-behavior: smooth;
+    padding: 15px;
+    /* मोबाइल के किनारों से सुरक्षित दूरी */
+}
+
+/* =========================================
+   3. TYPOGRAPHY (Fonts & Sizes)
+   ========================================= */
+h1, h2, h3, .hindi-title {
+    font-family: 'Rozha One', serif;
+    color: var(--royal-maroon);
+    line-height: 1.3;
+    word-wrap: break-word;
+    /* लंबा टेक्स्ट बाहर नहीं जाएगा */
+}
+
+.quote-text {
+    font-family: 'Kalam', cursive;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    /* स्क्रीन के हिसाब से ऑटोमेटिक साइज */
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.couple-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    /* मोबाइल पर 3rem, लैपटॉप पर 4.5rem */
+    color: var(--royal-maroon);
+    margin: 15px 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+}
+
+/* =========================================
+   4. MAIN LAYOUT (Wrapper)
+   ========================================= */
+.main-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: linear-gradient(rgba(255,250,250,0.95), rgba(255,250,250,0.95)),
+    url('https://www.transparenttextures.com/patterns/cream-paper.png');
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+    overflow: hidden;
+    position: relative;
+}
+
+/* =========================================
+   5. HERO SECTION (Landing)
+   ========================================= */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #fff0f5 0%, #fde4e4 100%);
+    border-bottom: 5px double var(--gold);
+    position: relative;
+    padding: 40px 20px;
+    overflow: hidden;
+}
+
+/* Hero Border Design */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 2px solid rgba(212, 175, 55, 0.4);
+    border-radius: 20px 20px 0 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Background Glowing Orbs */
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: 0;
+    animation: floatOrbs 10s infinite alternate ease-in-out;
+}
+.orb-1 {
+    width: 250px;
+    height: 250px;
+    background: rgba(212, 175, 55, 0.35);
+    top: -10%;
+    left: -10%;
+}
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba(128, 0, 0, 0.15);
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -5s;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+/* =========================================
+   6. CONTENT SHAPES (Sections Container)
+   ========================================= */
+.content-shape {
+    width: 90%;
+    max-width: 750px;
+    margin: 60px auto;
+    background: var(--card-bg);
+    padding: 40px 25px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    border: 1px solid rgba(212,175,55,0.2);
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+/* =========================================
+   7. COUPLE INFORMATION
+   ========================================= */
+.couple-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.groom-info, .bride-info {
+    width: 100%;
+    text-align: center;
+}
+
+/* Dynamic Text Styles in Couple Info */
+.g-name, .b-name {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+.g-parents, .b-parents {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+.g-address, .b-address {
+    font-size: 1rem;
+    color: var(--gold);
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+/* Premium Profile Image */
+.profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    padding: 6px;
+    background: white;
+    object-fit: cover;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    animation: gentlePulse 3s infinite;
+}
+
+/* 'SANG' Circle */
+.vs-circle {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--gold), #b8962d);
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.3rem;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
+    z-index: 2;
+}
+
+.wedding-congrats-text {
+    font-size: 1.25rem;
+    margin-top: 40px;
+    position: relative;
+    padding: 30px 20px 10px;
+    border-top: 1px dashed rgba(212, 175, 55, 0.5);
+}
+
+/* =========================================
+   8. EVENTS / FUNCTIONS
+   ========================================= */
+.function-main-title {
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+}
+
+.event-box {
+    background: white;
+    color: var(--text-dark);
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 550px;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    border-left: 6px solid var(--royal-maroon);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(128,0,0,0.15);
+}
+
+.function-name {
+    font-size: 1.6rem;
+    color: var(--royal-maroon);
+    margin-bottom: 8px;
+}
+.function-time {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+.function-link-address {
+    display: inline-block;
+    color: var(--royal-maroon);
+    text-decoration: none;
+    background: rgba(212, 175, 55, 0.15);
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: background 0.3s, color 0.3s;
+}
+.function-link-address:hover {
+    background: var(--gold);
+    color: white;
+}
+
+/* =========================================
+   9. RELATIVES (दर्शनाभिलाषी)
+   ========================================= */
+.relatives-box-wrapper {
+    background: linear-gradient(to right, #ffffff, #fffafa);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--gold);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+    text-align: left;
+}
+.relatives-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--royal-maroon);
+}
+.relatives-desc {
+    line-height: 1.7;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+}
+
+/* =========================================
+   10. COUNTDOWN TIMER
+   ========================================= */
+.countdown-container {
+    width: 90%;
+    max-width: 750px;
+    margin: 60px auto;
+    background: linear-gradient(135deg, var(--royal-maroon) 0%, #5a0000 100%);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(128,0,0,0.3);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Watermark icon inside timer */
+.countdown-container::before {
+    content: "\f017";
+    /* FontAwesome Clock */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    font-size: 12rem;
+    opacity: 0.05;
+    color: var(--gold);
+    transform: rotate(-15deg);
+}
+
+.timer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+.time-unit {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    width: 85px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.time-unit span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--gold-light);
+    line-height: 1.1;
+    margin-bottom: 2px;
+}
+.time-unit label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #f0f0f0;
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   11. FOOTER (Thank You)
+   ========================================= */
+.ending-section {
+    padding: 60px 20px 50px;
+    background: var(--royal-maroon);
+    color: white;
+    border-radius: 60px 60px 0 0;
+    margin-top: 70px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+}
+
+.thank-you-title {
+    color: var(--gold);
+    font-size: clamp(3rem, 6vw, 4rem);
+    margin-bottom: 10px;
+    font-family: 'Great Vibes', cursive;
+}
+.thank-you-request {
+    color: #f9f9f9;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.vineet-section {
+    margin-top: 30px;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    padding-top: 25px;
+    display: inline-block;
+}
+.vineet-label {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+}
+.vineet-names {
+    font-size: 1.4rem;
+    font-family: 'Rozha One', serif;
+    color: white;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+/* =========================================
+   12. ANIMATIONS & EFFECTS
+   ========================================= */
+
+.down-arrow-icon {
+    margin-top: 40px;
+    font-size: 1.8rem;
+    animation: gentleFloat 2s infinite;
+    color: var(--gold);
+    opacity: 0.8;
+}
+.icon-gold {
+    color: var(--gold);
+}
+
+/* Keyframes */
+@keyframes floatOrbs {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(30px, 30px) scale(1.1);
+    }
+}
+@keyframes gentleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+@keyframes gentlePulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(212, 175, 55, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+
+
+
+/* Watermark Animation */
+.watermark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+}
+.watermark-text {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: rgba(211, 47, 47, 0.3);
+    font-family: sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    transform: rotate(-30deg);
+    white-space: nowrap;
+    animation: slideWatermark 4s ease-in-out infinite alternate;
+    margin: -20px 0;
+}
+@keyframes slideWatermark {
+    0% {
+        transform: rotate(-30deg) translateX(-40px);
+    }
+
+    100% {
+        transform: rotate(-30deg) translateX(40px);
+    }
+}
+
+/* =========================================
+   13. RESPONSIVE DESIGN (Tablets & Desktops)
+   ========================================= */
+@media (min-width: 768px) {
+    /* लैपटॉप और टैबलेट के लिए ग्रिड/बैलेंसिंग */
+    .couple-card {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .groom-info, .bride-info {
+        width: 40%;
+    }
+    .content-shape {
+        padding: 50px 40px;
+    }
+    .function-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .event-box {
+        margin: 0;
+        max-width: 100%;
+        height: 100%;
+    }
+
+    /* ग्रिड में कार्ड समान ऊंचाई के होंगे */
+    .relatives-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .relatives-box-wrapper {
+        margin-bottom: 0;
+        height: 100%;
+    }
+    .timer {
+        gap: 25px;
+    }
+    .time-unit {
+        width: 100px;
+        height: 110px;
+    }
+    .time-unit span {
+        font-size: 2.8rem;
+    }
+    .ending-section {
+        padding: 80px 40px 60px;
+        border-radius: 100px 100px 0 0;
+    }
+}
+
+@media (max-width: 400px) {
+    /* बहुत छोटे मोबाइल के लिए */
+    .time-unit {
+        width: 70px;
+        height: 80px;
+    }
+    .time-unit span {
+        font-size: 1.6rem;
+    }
+    .profile-img {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+
+
+
+
+
+
+/* =========================================
+   1. PREMIUM RELIGIOUS ICON
+   ========================================= */
+.religious-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 250, 250, 0.4) 100%);
+    border: 2px solid rgba(212, 175, 55, 0.6);
+    border-radius: 50%;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.2);
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+/* आइकन के चारों ओर घूमने वाली सुनहरी रिंग */
+.religious-icon::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    border: 2px dashed var(--gold);
+    border-radius: 50%;
+    animation: spinRotate 15s linear infinite;
+    opacity: 0.8;
+}
+
+.animated-icon {
+    color: var(--gold);
+    font-size: 3rem !important;
+    /* आइकन को थोड़ा बड़ा और स्पष्ट किया गया */
+    animation: gentlePulse 3s ease-in-out infinite;
+    filter: drop-shadow(0px 5px 8px rgba(212, 175, 55, 0.5));
+}
+
+@keyframes spinRotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================
+   2. QUOTES SMOOTH FADE ANIMATION
+   ========================================= */
+.religious-animation-text {
+    /* 100px की न्यूनतम ऊंचाई ताकि नीचे का नाम ऊपर-नीचे न कूदे */
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto 15px auto;
+
+    /* बहुत ही स्मूथ फेड और ग्लाइड ट्रांजिशन */
+    transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-out {
+    opacity: 0;
+    /* गायब होते समय टेक्स्ट हल्का सा नीचे जाएगा और आते समय ऊपर आएगा */
+    transform: translateY(15px);
+}
+
+/* =========================================
+   3. COUNTDOWN TEXT VISIBILITY FIX
+   ========================================= */
+/* डार्क बैकग्राउंड पर टेक्स्ट को उभरने के लिए !important का प्रयोग */
+.countdown-container .wedding-countdown-text,
+.countdown-container .countdown-title {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 5;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+}
+
+.countdown-container .wedding-date-text {
+    color: var(--gold-light) !important;
+    font-weight: bold;
+    font-size: 1.3rem;
+    position: relative;
+    z-index: 5;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
