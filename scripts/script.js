@@ -83,27 +83,36 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             // कोट्स (Quotes) का एनीमेशन
-            if (data.quotes && Array.isArray(data.quotes) && data.quotes.length > 0) {
-                const quoteEl = document.querySelector('.religious-animation-text');
-                if (quoteEl) {
-                    if (data.quotes.length === 1) {
-                        // अगर सिर्फ एक कोट है, तो उसे सीधा दिखाएं
-                        quoteEl.innerHTML = data.quotes[0];
-                    } else {
-                        // अगर एक से ज्यादा हैं, तो 4 सेकंड के अंतराल पर उन्हें बदलें
-                        let i = 0;
-                        quoteEl.innerHTML = data.quotes[i];
-                        setInterval(() => {
-                            quoteEl.classList.add('fade-out');
-                            setTimeout(() => {
-                                i = (i + 1) % data.quotes.length;
-                                quoteEl.innerHTML = data.quotes[i];
-                                quoteEl.classList.remove('fade-out');
-                            }, 800);
-                        }, 4000);
-                    }
-                }
-            }
+if (data.quotes && Array.isArray(data.quotes) && data.quotes.length > 0) {
+    const quoteEl = document.querySelector('.religious-animation-text');
+    
+    if (quoteEl) {
+        if (data.quotes.length === 1) {
+            quoteEl.innerHTML = data.quotes[0];
+        } else {
+            let i = 0;
+            // पहली बार दिखाने के लिए
+            quoteEl.innerHTML = data.quotes[i];
+            
+            // एनीमेशन लूप
+            setInterval(() => {
+                // 1. फेड आउट शुरू करें (CSS क्लास जोड़ें)
+                quoteEl.classList.add('fade-out');
+                
+                // 2. CSS ट्रांजिशन (0.5s) के बाद टेक्स्ट बदलें
+                setTimeout(() => {
+                    i = (i + 1) % data.quotes.length;
+                    quoteEl.innerHTML = data.quotes[i];
+                    
+                    // 3. फेड इन के लिए क्लास हटाएँ
+                    quoteEl.classList.remove('fade-out');
+                }, 500); // यह CSS transition duration (0.5s) से मैच होना चाहिए
+                
+            }, 5000); // कुल 5 सेकंड का अंतराल (4.5s दिखना + 0.5s ट्रांजिशन)
+        }
+    }
+}
+            
 
             // ============================================================================
             // 6. DYNAMIC SECTIONS BUILD (फंक्शन और रिश्तेदारों की लिस्ट बनाना)
