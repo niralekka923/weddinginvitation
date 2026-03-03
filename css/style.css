@@ -333,6 +333,22 @@ h1, h2, h3, .hindi-title {
     transform: rotate(-15deg);
 }
 
+.countdown-title {
+    color: var(--gold) !important; /* टेक्स्ट को गोल्डन रंग देगा ताकि यह साफ दिखे */
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 2; /* इसे वाटरमार्क आइकॉन के ऊपर लाने के लिए */
+}
+
+.countdown-date {
+    color: #f9f9f9; /* तारीख को सफेद रंग देगा */
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
 .timer {
     display: flex;
     justify-content: center;
