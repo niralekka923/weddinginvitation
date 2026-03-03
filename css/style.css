@@ -462,6 +462,10 @@ h1, h2, h3, .hindi-title {
     animation: spinRotateReverse 20s linear infinite;
 }
 
+.religious-icon i {
+    color: var(--gold);
+}
+
 .animated-icon {
     color: var(--gold);
     font-size: clamp(2rem, 5vw, 2.8rem) !important;
